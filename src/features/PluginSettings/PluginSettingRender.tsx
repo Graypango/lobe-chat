@@ -1,3 +1,4 @@
+// features/PluginStore/PluginSettingRender.tsx
 import { Input, InputNumber, Select, Slider, Switch } from 'antd';
 import { JSONSchema7Type } from 'json-schema';
 import { memo } from 'react';
@@ -68,11 +69,12 @@ const PluginSettingRender = memo<PluginSettingsProps>(
           />
         );
       }
+
       case 'boolean': {
         return (
           <Switch
             {...props}
-            defaultValue={defaultValue}
+            defaultChecked={defaultValue !== undefined ? defaultValue : true}  // 设置默认值为 true
             onChange={(e) => {
               onChange(e);
             }}
